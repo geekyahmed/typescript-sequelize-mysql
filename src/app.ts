@@ -9,7 +9,7 @@ class App {
     public port: string | number
     public env: string
 
-    constructor(routes: Route) {
+    constructor(routes: Route[]) {
         this.app = express()
         this.port = process.env.PORT || 3000
         this.env = process.env.NODE_ENV || 'development'

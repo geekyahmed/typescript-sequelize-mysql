@@ -3,7 +3,7 @@ import { Route } from '../interfaces'
 import { TodoController } from '../controllers'
 
 class TodoRoute implements Route {
-    public path = '/auth'
+    public path = '/todos'
     public router = Router()
     public todoController = new TodoController()
 
