@@ -40,8 +40,8 @@ class App {
                 console.log(`🚀 Connected to ${process.env.DB_NAME} database successfully 🚀`);
                 console.log(`=================================`);
             })
-            .catch((err: Error) => {
-                console.error(err)
+            .catch((err) => {
+                console.log(err)
             })
     }
 

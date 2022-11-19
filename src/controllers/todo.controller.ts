@@ -8,12 +8,12 @@ class TodoController {
 
     public createTodo = async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const createdTodo = await this.todoService.createTodo(req.body)
+            const OKTodo = await this.todoService.createTodo(req.body)
 
             return sendResponse(res,
                 HttpCodes.CREATED,
                 'Todo created successfully',
-                createdTodo
+                OKTodo
             )
         } catch (err) {
             next(err)
@@ -25,7 +25,7 @@ class TodoController {
             const todos = await this.todoService.getTodos()
 
             return sendResponse(res,
-                HttpCodes.CREATED,
+                HttpCodes.OK,
                 'Todos retrieved successfully',
                 todos
             )
@@ -36,10 +36,10 @@ class TodoController {
 
     public getTodoById = async (req: Request, res: Response, next: NextFunction) => {
         try {
-            const todo = await this.todoService.getTodoById(req.params.id)
+            const todo = await this.todoService.getTodoById(Number(req.params.id))
 
             return sendResponse(res,
-                HttpCodes.CREATED,
+                HttpCodes.OK,
                 'Todo retrieved successfully',
                 todo
             )
@@ -50,10 +50,10 @@ class TodoController {
 
     public updateTodo = async (req: Request, res: Response, next: NextFunction) => {
         try {
-            await this.todoService.updateTodo(req.params.id, req.body)
+            await this.todoService.updateTodo(Number(req.params.id), req.body)
 
             return sendResponse(res,
-                HttpCodes.CREATED,
+                HttpCodes.OK,
                 'Todo updated successfully'
             )
         } catch (err) {
@@ -63,10 +63,10 @@ class TodoController {
 
     public deleteTodo = async (req: Request, res: Response, next: NextFunction) => {
         try {
-            await this.todoService.deleteTodo(req.params.id)
+            await this.todoService.deleteTodo(Number(req.params.id))
 
             return sendResponse(res,
-                HttpCodes.CREATED,
+                HttpCodes.OK,
                 'Todo deleted successfully'
             )
         } catch (err) {

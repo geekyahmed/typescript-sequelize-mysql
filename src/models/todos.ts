@@ -18,12 +18,6 @@ class Todos extends Model {
         allowNull: false
     })
     description!: string
-
-    @Column({
-        type: DataType.BOOLEAN,
-        allowNull: false,
-    })
-    isDone!: boolean
 }
 
 export { Todos }

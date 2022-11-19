@@ -18,7 +18,7 @@ class TodoService {
         return todos
     }
 
-    public async getTodoById(id: string): Promise<Todos> {
+    public async getTodoById(id: number): Promise<Todos> {
         const singleTodo = await this.todos.findByPk(id)
 
         if (!singleTodo) throw createHttpError(HttpCodes.BAD_REQUEST, 'Todo bearing this id not found')
@@ -26,7 +26,7 @@ class TodoService {
         return singleTodo
     }
 
-    public async updateTodo(id: string, payload: ITodo) {
+    public async updateTodo(id: number, payload: ITodo) {
         await this.getTodoById(id)
 
         const updatedTodo = await this.todos.update({ ...payload }, {
@@ -38,7 +38,7 @@ class TodoService {
         return updatedTodo
     }
 
-    public async deleteTodo(id: string) {
+    public async deleteTodo(id: number) {
         await this.getTodoById(id)
 
         return this.todos.destroy({
