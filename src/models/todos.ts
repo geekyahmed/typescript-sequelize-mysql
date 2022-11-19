@@ -1,11 +1,12 @@
 import { Table, Model, Column, DataType } from "sequelize-typescript"
+import { ITodo } from '../interfaces'
 
 @Table({
     timestamps: true,
     tableName: "todos"
 })
 
-export class Todos extends Model {
+class Todos extends Model<ITodo> {
     @Column({
         type: DataType.STRING,
         allowNull: false
@@ -17,4 +18,12 @@ export class Todos extends Model {
         allowNull: false
     })
     description!: string
+
+    @Column({
+        type: DataType.BOOLEAN,
+        allowNull: false,
+    })
+    isDone!: boolean
 }
+
+export { Todos }

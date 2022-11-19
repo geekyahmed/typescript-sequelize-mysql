@@ -1,0 +1,1 @@
+export { Todo as ITodo } from './todo.interface'
