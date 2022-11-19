@@ -7,7 +7,7 @@ class TodoService {
     public todos = Todos
 
     public async createTodo(payload: ITodo): Promise<Todos> {
-        const newTodo = this.todos.create(payload)
+        const newTodo = this.todos.create({ ...payload })
 
         return newTodo
     }

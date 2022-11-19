@@ -13,12 +13,12 @@ class TodoRoute implements Route {
 
     private initializeRoutes() {
         this.router
-            .route('/')
+            .route(this.path)
             .get(this.todoController.getTodos)
             .post(this.todoController.createTodo)
 
         this.router
-            .route('/:id')
+            .route(`${this.path}/:id`)
             .get(this.todoController.getTodoById)
             .put(this.todoController.updateTodo)
             .delete(this.todoController.deleteTodo)

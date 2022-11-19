@@ -6,7 +6,7 @@ import { ITodo } from '../interfaces'
     tableName: "todos"
 })
 
-class Todos extends Model<ITodo> {
+class Todos extends Model {
     @Column({
         type: DataType.STRING,
         allowNull: false
