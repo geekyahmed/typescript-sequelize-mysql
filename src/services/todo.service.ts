@@ -6,19 +6,19 @@ import { HttpCodes } from '../constants'
 class TodoService {
     public todos = Todos
 
-    public createTodo = async (payload: ITodo): Promise<Todos> => {
+    public async createTodo(payload: ITodo): Promise<Todos> {
         const newTodo = this.todos.create(payload)
 
         return newTodo
     }
 
-    public getTodos = async (): Promise<Todos[]> => {
+    public async getTodos(): Promise<Todos[]> {
         const todos = this.todos.findAll()
 
         return todos
     }
 
-    public getTodoById = async (id: string): Promise<Todos> => {
+    public async getTodoById(id: string): Promise<Todos> {
         const singleTodo = await this.todos.findByPk(id)
 
         if (!singleTodo) throw createHttpError(HttpCodes.BAD_REQUEST, 'Todo bearing this id not found')
@@ -26,7 +26,7 @@ class TodoService {
         return singleTodo
     }
 
-    public updateTodo = async (id: string, payload: ITodo) => {
+    public async updateTodo(id: string, payload: ITodo) {
         await this.getTodoById(id)
 
         const updatedTodo = await this.todos.update({ ...payload }, {
@@ -38,7 +38,7 @@ class TodoService {
         return updatedTodo
     }
 
-    public deleteTodo = async (id: string) => {
+    public async deleteTodo(id: string) {
         await this.getTodoById(id)
 
         return this.todos.destroy({
